@@ -1,14 +1,17 @@
 from django.db import models
 
 class Employee(models.Model):
-    class Meta:
-        verbose_name = "کارمند"
-        verbose_name_plural = "کارمندان"
-        db_table = "Employee"
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    position = models.CharField(max_length=50)
 
-    title = models.CharField(max_length=25, null=False, blank=False, verbose_name="سمت")
-    agreement_image = models.ImageField(upload_to="account/contracts", null=False, blank=False, verbose_name="عکس قرارداد")
-    contract_Date = models.DateField(null=False, blank=False, verbose_name="تاریخ استخدام")
-    user_ID = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="کاربر")
-    address_ID = models.ForeignKey(Address, on_delete=models.CASCADE, verbose_name="آدرس")
-    tel_ID = models.ForeignKey(Tel, on_delete=models.CASCADE, verbose_name="شماره تماس")
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+    
+class ContactInfo(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=15)
+    email = models.EmailField(max_length=100)
+
+    def __str__(self):
+        return f"Contact info for {self.employee}"
