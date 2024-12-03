@@ -1,12 +1,14 @@
 from django.db import models
 
-class modirGroh(models.Model):
+class Employee(models.Model):
     class Meta:
-        verbose_name = "مدیر"
-        verbose_name_plural = "شماره تماس ها"
-        db_table = "Tel"
+        verbose_name = "کارمند"
+        verbose_name_plural = "کارمندان"
+        db_table = "Employee"
 
-    home_Number = models.CharField(max_length=15, null=False, blank=False, verbose_name="تلفن ثابت")
-    phone_Number = models.CharField(max_length=11, null=False, blank=False, verbose_name="تلفن موبایل")
-    work_Number = models.CharField(max_length=15, null=False, blank=True, verbose_name="تلفن محل کار")
+    title = models.CharField(max_length=25, null=False, blank=False, verbose_name="سمت")
+    agreement_image = models.ImageField(upload_to="account/contracts", null=False, blank=False, verbose_name="عکس قرارداد")
+    contract_Date = models.DateField(null=False, blank=False, verbose_name="تاریخ استخدام")
     user_ID = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="کاربر")
+    address_ID = models.ForeignKey(Address, on_delete=models.CASCADE, verbose_name="آدرس")
+    tel_ID = models.ForeignKey(Tel, on_delete=models.CASCADE, verbose_name="شماره تماس")
