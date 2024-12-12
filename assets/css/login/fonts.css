@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'B_yekan';
+    src: url("../../fonts/login/B_Yekan/Yekan.ttf") format("ttf");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Iran_nastaliq_sh';
+    src: url('../../fonts/login/Iran_nastaliq/Shekasteh.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Iran_nastaliq';
+    src: url('../../fonts/login/Iran_nastaliq/IranNastaliq.ttf') format('ttf');
+    src: url('../../fonts/login/Iran_nastaliq/IranNastaliq.woff') format('woff');
+    src: url('../../fonts/login/Iran_nastaliq/IranNastaliq.eot') format('eot');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BMITRA';
+    src: url('../../fonts/login/Bmitra/BMITRA.eot') format('eot');
+    src: url('../../fonts/login/Bmitra/BMITRA.otf') format('otf');
+    src: url('../../fonts/login/Bmitra/BMITRA.woff') format('woff');
+    src: url('../../fonts/login/Bmitra/BMITRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BMITRAB';
+    src: url('../../fonts/login/Bmitra/BMITRA2.eot') format('eot');
+    src: url('../../fonts/login/Bmitra/BMITRA2.otf') format('otf');
+    src: url('../../fonts/login/Bmitra/BMITRA2.woff') format('woff');
+    src: url('../../fonts/login/Bmitra/BMITRA2.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}

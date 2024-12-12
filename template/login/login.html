@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../assets/images/login/uni_logo2.png">
+    <title>سامانه دانشجویی (آموزشیار)</title>
+    <link rel="stylesheet" href="../../assets/css/login/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="../../assets/css/login/login_style.css">
+    <link rel="stylesheet" href="../../assets/css/login/notification.css">
+    <link rel="stylesheet" href="../../assets/css/login/all.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container-uni">
+        <div class="besmelah">
+            <img src="../../assets/images/login/besmeallah.png" alt="" class="mesmelah">
+        </div>
+        <div class="flag">
+            <img class="flag-iran" src="../../assets/images/login/iran_left.png" alt="">
+        </div>
+        <div class="logo">
+            <img src="../../assets/images/login/uni_logo2.png" alt="لوگوی دانشگاه آزاد">
+        </div>
+        <h1 class="title">سامانه دانشجویی (آموزشیار)</h1>
+        <form action="#" method="post">
+            <div class="form-group">
+                <input required maxlength="16" oninput="InputUser(event)" type="text" name="student_code"
+                    placeholder="کد دانشجویی">
+                <i class="icon" id="icon-user"></i>
+            </div>
+            <div class="form-group">
+                <input required type="password" name="password" placeholder="رمز عبور">
+                <i class="icon" id="icon-pass"></i>
+            </div>
+            <div class="captcha">
+                <canvas onclick="ReloadCaptcha()" id="captchaCanvas" width="120" height="40"></canvas>
+                <input required maxlength="5" type="text" id="captchaInput" name="captcha" placeholder="کد امنیتی">
+            </div>
+            <div class="help-container">
+                <ul class="ul-help">
+                    <li><a class="text-forget" href="#">فراموشی رمز عبور</a></li>
+                    <li><a class="text-call" href="#">تماس با پشتیبانی</a></li>
+                </ul>
+            </div>
+
+            <button onclick="Send(event)" type="submit" class="btn btn-primary btn-login">ورود</button>
+        </form>
+        <div class="footer">
+            کلیه حقوق استفاده از سیستم آموزشیار متعلق به "دانشگاه آزاد اسلامی" است
+        </div>
+
+    </div>
+
+    <!-- Alert Boot Strap -->
+    <div id="customAlert-danger" class="alert alert-danger alert-custom" role="alert"></div>
+    <div id="customAlert-success" class="alert alert-success alert-custom" role="alert"></div>
+    <!-- Alert Custom -->
+    <div class="notifications_nofit">
+
+    <script src="../../assets/js/login/login.js"></script>
+    <script src="../../assets/js/bootstrap-js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
