@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'BMITRA';
+    src: url('../../fonts/404/BMITRA.eot');
+    src: url('../../fonts/404/BMITRA.ttf') format('truetype'),
+        url('../../fonts/404/BMITRA.woff2 ') format('woff2'),
+        url('../../fonts/404/BMITRA.woff ') format('woff');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'BMITRA';
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #151729;
+    background-image: url('../../images/404/p404.png');
+    background-repeat: repeat;
+}
+
+#container .content{
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#container .content h2{
+    font-size: 20rem;
+    color: #fff;
+    margin: 7rem;
+}
+
+#container .content h4{
+    font-size:50px;
+    color: #fff;
+    margin-top: -200px;
+    position: relative;
+}
+#container .content p{
+    font-size:20px;
+    color: #fff;
+    margin: 10px 0;
+}
+#container .content a{
+    text-decoration: none;
+    color: #fff;
+    background-color: #8500ff;
+    padding:  10px 20px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
