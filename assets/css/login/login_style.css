@@ -1,0 +1,201 @@
+@import url('./fonts.css');
+
+* {
+    font-family: 'BMITRAB';
+    font-size: 25px;
+    /* filter: blur(2px); */
+}
+
+body {
+    background-image: url("../../images/login/uni.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    direction: rtl;
+    background-color: #e0e0db;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-family: 'Iran_nastaliq';
+    font-size: 30px;
+}
+
+.container-uni {
+    max-width: 800px;
+    margin: 50px auto;
+    margin-top: 7%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 0px 36px 17px rgba(20, 20, 20, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 400px);
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'BMITRA';
+
+}
+
+.captcha {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+
+}
+
+.captcha canvas {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 7px;
+
+}
+
+.captcha input {
+    width: calc(100% - 536px);
+}
+
+
+.btn-login {
+    width: calc(100% - 400px);
+    transition: width 0.4s cubic-bezier(0.4, 0, 1, 1) !important;
+    border-radius: 15px !important;
+    font-family: 'BMITRA' !important;
+
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+    width: 30%;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #000000;
+    font-weight: 1000;
+    font-family: 'BMITRA';
+
+
+}
+
+.icon {
+    position: absolute;
+    top: 40%;
+    right: 28%;
+    width: 31px;
+    height: 30px;
+    background-repeat: no-repeat;
+}
+
+#icon-user {
+    background-image: url("../../images/login/Icons/icon_user/icons8-user-24.png");
+}
+
+#icon-pass {
+    background-image: url("../../images/login/Icons/Icon_pass/icons8-password-32.png");
+    right: 28.5%;
+    top: 50.6%;
+}
+
+.help-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ul-help {
+    display: flex;
+    padding: 0;
+    margin: 10px auto;
+    gap: 3rem;
+    text-align: center;
+    list-style: none;
+}
+
+.from-help ul li a:hover {
+    color: #007bff;
+
+}
+
+.text-forget,
+.text-call {
+    text-decoration: none;
+    color: #000000;
+    font-family: 'BMITRA';
+    font-size: 20px;
+}
+
+.flag-iran {
+    width: 20%;
+    top: -1.5%;
+    left: -1.3%;
+    position: fixed;
+    z-index: 1;
+}
+
+
+.mesmelah {
+    position: fixed;
+    z-index: 1;
+    top: -7%;
+    left: 38%;
+}
+
+.alert-custom {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    display: none;
+    opacity: 0;
+    font-family: 'BMITRA';
+    transition: opacity 0.5s ease-in-out, transform 0.5s cubic-bezier(0.4, 0, 1, 1);
+    height: 5px !important;
+    width: 20% !important;
+    padding: 12px 0 50px 0;
+}
+
+
+
+.alert-show {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0);
+}
+
+.alert-hide {
+    opacity: 0;
+    transform: translateY(-20px);
+}

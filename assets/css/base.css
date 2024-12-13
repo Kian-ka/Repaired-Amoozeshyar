@@ -10,6 +10,40 @@
   background-color: var(--white);
 }
 
+/* we give these parameters to *.css */
+:root{
+  /* color */
+  --primary:#2f3bbc;
+  --secondary:#A6AEBF;
+  --gray:#3C3D37;
+  --white :#F4F9F9;
+  --shadow:#0000004d;
+
+  /* size */
+  --T:5px;
+  --S:10.5px;
+  --M:14px;
+  --L:18px;
+  --XL:24px;
+  --XXL:28px;
+  --XXXL:32px;
+  --Header:72px;
+  --FullWidth:100vw;
+  --FullHeight:100vh;
+
+
+  /* boxing */
+  --T_padding:4px;
+  --S_padding:8px;
+  --M_padding:18px;
+  --L_padding:25px;
+
+  /* size persentage */
+  --Quarter:25%;
+  --Half:50%;
+  --SeventyFive:75%;
+}
+
 /* texts that notif user */
 .notif{
   direction: rtl;
@@ -169,36 +203,3 @@ footer .copyright{
 /* end of Footer Logo Side option */
 /* end of Footer Option */
 
-/* we give these parameters to *.css */
-:root{
-  /* color */
-  --primary:#2f3bbc;
-  --secondary:#A6AEBF;
-  --gray:#3C3D37;
-  --white :#F4F9F9;
-  --shadow:#0000004d;
-
-  /* size */
-  --T:5px;
-  --S:10.5px;
-  --M:14px;
-  --L:18px;
-  --XL:24px;
-  --XXL:28px;
-  --XXXL:32px;
-  --Header:72px;
-  --FullWidth:100vw;
-  --FullHeight:100vh;
-
-
-  /* boxing */
-  --T_padding:4px;
-  --S_padding:8px;
-  --M_padding:18px;
-  --L_padding:25px;
-
-  /* size persentage */
-  --Quarter:25%;
-  --Half:50%;
-  --SeventyFive:75%;
-}

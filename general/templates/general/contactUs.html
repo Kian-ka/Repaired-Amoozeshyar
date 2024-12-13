@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static "css/contactUs/style.css" %}"/>
+    <link
+      rel="icon"
+      type="image/x-icon/png"
+      href="{% static "images/logo/amozeshyar_logo.png" %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static "icons/fontawesome-free-6.6.0-web/css/all.css" %}"
+    />
+    <title>تماس با ما</title>
+  </head>
+  <body>
+    <header>
+      <!-- link to open Amoozeshyar panel -->
+      <div class="header_left">
+        <button>
+          ورود به آموزشیار<span
+            ><i class="fa-solid fa-right-to-bracket"></i
+          ></span>
+        </button>
+      </div>
+      <!-- end of link to open Amoozeshyar panel  -->
+      <!-- header links -->
+      <div class="header_middle">
+        <a href="">تماس با ما</a>
+        <a href="">سیستم پشتیبانی</a>
+        <a href="">سایت آموزش</a>
+        <a href="">اطلاعیه ها</a>
+        <a href="">آرشیو اخبار</a>
+        <a href="">آموزش مجازی وادا</a>
+      </div>
+      <!-- end of header links -->
+      <!-- Amoozeshyar Logo -->
+      <div class="header_right">
+        <a href="/"
+          ><img
+            src="/assets/images/logo/amozeshyar_logo.png"
+            alt="Amoozeshyar Logo"
+        /></a>
+      </div>
+      <!-- end of Amoozeshyar Logo -->
+    </header>
+
+    <main>
+      <section class="info">
+        <div class="info_parent">
+          <div class="top">
+            <p class="notif">
+              <i class="fa-solid fa-bullhorn notif_icon"></i>قابل توجه دانشجویان
+              گرامی مرکز پشتیبانی آموزشیار در آیگپ فعال می باشد و از طریق دکمه
+              زیر امکان ارسال پرسش و دریافت پاسخ وجود دارد.
+            </p>
+          </div>
+          <div class="bottom">
+            <div class="bottom_text">
+              <div class="text">
+                <h4>آدرس سازمان مرکزی:</h4>
+                <p>
+                  تهران، انتهای بزرگراه شهید ستاری (شمال)، میدان دانشگاه، بلوار
+                  شهدای حصارک، سازمان مرکزی دانشگاه آزاد اسلامی
+                </p>
+              </div>
+              <div class="text">
+                <h4>کد پستی :</h4>
+                <p>1477893855</p>
+              </div>
+              <div class="text">
+                <h4>تلفن :</h4>
+                <p>۰۲۱-۹۱۰۷۰۰۶۵</p>
+              </div>
+              <div class="text">
+                <h4>ساعات پاسخگویی :</h4>
+                <p>۸ الی ۱۵</p>
+              </div>
+            </div>
+            <div class="googleMap">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3236.779919036195!2d51.315503011461715!3d35.780782124384295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDQ2JzUwLjgiTiA1McKwMTknMDUuMSJF!5e0!3m2!1sen!2s!4v1731938391396!5m2!1sen!2s"
+                width="400"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container ticket">
+        <div class="ticket_parent">
+          <h2>ارسال تیکت</h2>
+          <form>
+            <div class="ticket_input">
+              <label for="fName">نام</label>
+              <input class="inp" type="text" name="fName" id="fName" placeholder="نام">
+              <span></span>
+            </div>
+            <div class="ticket_input">
+              <label for="email">ایمیل(اختیاری)</label>
+              <input class="inp" type="email" name="email" id="email" placeholder="آدرس ایمیل">
+              <span></span>
+            </div>
+            <div class="ticket_input">
+              <label for="stdCode">کد دانشجویی</label>
+              <input class="inp" type="number" name="stdCode" id="stdCode" placeholder="کد دانشجویی">
+              <span></span>
+            </div>
+            <div class="ticket_input">
+              <label for="phone">شماره همراه</label>
+              <input class="inp" type="number" name="phone" id="phone" placeholder="شماره همراه">
+              <span></span>
+            </div>
+            <div class="ticket_input">
+              <label for="message">پیام</label>
+              <textarea class="inp" name="message" id="message" placeholder="متن پیام"></textarea>
+              <span></span>
+            </div>
+          </form>
+        </div>
+        <div class="ticket_image">
+          <img src="/assets/images/contactUs/section2/sendEmail_img.png" alt="Send Ticket Image">
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer_bio">
+        <div class="footer_info">
+          <div>
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="footer_text">
+            <p>آدرس:</p>
+            <h4>
+              تهران، انتهای بزرگراه شهید ستاری (شمال)، میدان دانشگاه، بلوار
+              شهدای حصارک، سازمان مرکزی دانشگاه آزاد اسلامی
+            </h4>
+          </div>
+        </div>
+
+        <div class="footer_info">
+          <i class="fa-solid fa-phone-volume"></i>
+          <div class="footer_text">
+            <p>تلفن تماس:</p>
+            <h5>021-91070065</h5>
+          </div>
+        </div>
+
+        <div class="footer_info">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <div class="footer_text">
+            <p>دانلود برنامه:</p>
+            <h5>دانلود آموزشیار پلاس</h5>
+            <h5>دانلود آیگپ</h5>
+          </div>
+        </div>
+
+        <div class="footer_info">
+          <i class="fa-solid fa-envelope"></i>
+          <div class="footer_text">
+            <p>کد پستی:</p>
+            <h5>1477893855</h5>
+          </div>
+        </div>
+      </div>
+      <div class="logo">
+        <img
+          src="/assets/images/logo/amozeshyar_logo.png"
+          alt="amoozeshyar logo"
+        />
+      </div>
+      <div class="copyright">
+        <p>
+          <i class="fa-regular fa-copyright"></i> تمامی حقوق این سایت متعلق است
+          به دانشگاه ازاد اسلامی.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
