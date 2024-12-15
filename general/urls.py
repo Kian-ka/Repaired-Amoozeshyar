@@ -18,5 +18,8 @@ urlpatterns = [
     # path('api/', include(router.urls)),
     path("", views.homePage, name="home"),
     path("contactUs", views.contactUS, name="contactUs"),
-    path("login", views.login, name="login")
+    path("login", views.login, name="login"),
+    path("api/login/", views.LoginView.as_view(), name="api_login"),
+    path("api/csrf/", views.get_csrf_token, name="csrf"),
+    path("dashboard/", views.dashboard, name="dashboard"),
 ]

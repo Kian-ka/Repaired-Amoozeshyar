@@ -22,7 +22,7 @@ class FacultyAdmin(admin.ModelAdmin):
 
 @admin.register(Professor)
 class ProfessorAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'faculty', 'personnel_code', 'academic_rank', 'hire_date')
+    list_display = ('first_name', 'last_name', 'faculty', 'personnel_code', 'academic_rank', 'hire_date', 'password')
     search_fields = ('first_name', 'last_name', 'personnel_code')
     list_filter = ('faculty', 'academic_rank')
     ordering = ('last_name', 'first_name')
@@ -30,7 +30,7 @@ class ProfessorAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('اطلاعات شخصی', {
-            'fields': (('first_name', 'last_name'), 'national_code', 'birth_date', 
+            'fields': (('first_name', 'last_name'), 'national_code', 'password', 'birth_date', 
                       'gender', 'marital_status')
         }),
         ('اطلاعات دانشگاهی', {
@@ -40,16 +40,10 @@ class ProfessorAdmin(admin.ModelAdmin):
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'student_number', 'faculty', 
-                   'entry_year', 'degree', 'is_active')
-    search_fields = ('first_name', 'last_name', 'student_number')
-    list_filter = ('faculty', 'degree', 'is_active', 'entry_year')
-    ordering = ('last_name', 'first_name')
-    list_per_page = 20
-
+    list_display = ('first_name', 'last_name', 'national_code', 'password', 'student_number')
     fieldsets = (
         ('اطلاعات شخصی', {
-            'fields': (('first_name', 'last_name'), 'national_code', 'birth_date', 
+            'fields': (('first_name', 'last_name'), 'national_code', 'password', 'birth_date', 
                       'gender', 'marital_status')
         }),
         ('اطلاعات تحصیلی', {

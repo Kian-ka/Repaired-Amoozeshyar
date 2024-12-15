@@ -27,6 +27,12 @@ class Person(models.Model):
         ],
         verbose_name="کد ملی"
     )
+    password = models.CharField(
+        max_length=128, 
+        verbose_name="رمز عبور",
+        null=True,  # Allow NULL in database
+        blank=True  # Allow blank in forms
+    )
     birth_date = models.DateField(verbose_name="تاریخ تولد")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, verbose_name="جنسیت")
     marital_status = models.CharField(
@@ -53,6 +59,11 @@ class Person(models.Model):
             age = (date.today() - self.birth_date).days / 365
             if age < 15:
                 raise ValidationError(_('سن باید بیشتر از ۱۵ سال باشد'))
+
+            # Add password validation
+            if len(self.password) < 6:
+                raise ValidationError(_('رمز عبور باید حداقل ۶ کاراکتر باشد'))
+                
         except Exception as e:
             raise ValidationError(f'خطا در اعتبارسنجی اطلاعات شخصی: {str(e)}')
 

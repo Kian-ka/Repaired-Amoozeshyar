@@ -1,4 +1,12 @@
 from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Student, Professor
+from django.middleware.csrf import get_token
+from django.http import JsonResponse
+from rest_framework.permissions import AllowAny
+from django.views.decorators.csrf import ensure_csrf_cookie
 # from rest_framework import viewsets, filters, status
 # from rest_framework.decorators import action
 # from rest_framework.response import Response
@@ -115,3 +123,52 @@ def contactUS(request):
 # Login View
 def login(request):
     return render(request, "general/login.html", context={})
+
+
+@ensure_csrf_cookie
+def get_csrf_token(request):
+    return JsonResponse({'csrfToken': get_token(request)})
+
+class LoginView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        national_code = request.data.get('national_code')
+        password = request.data.get('password')
+        user_type = request.data.get('user_type', 'student')  # default to student
+
+        if not national_code or not password:
+            return Response({
+                'error': 'لطفا کد ملی و رمز عبور را وارد کنید'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Try to find the user in either Student or Professor model
+        try:
+            if user_type == 'student':
+                user = Student.objects.get(national_code=national_code)
+            else:
+                user = Professor.objects.get(national_code=national_code)
+
+            if user.password == password:  # Note: This is not secure for real applications
+                return Response({
+                    'success': 'ورود موفقیت آمیز',
+                    'user': {
+                        'id': user.id,
+                        'national_code': user.national_code,
+                        'full_name': f"{user.first_name} {user.last_name}",
+                        'user_type': user_type
+                    }
+                })
+            else:
+                return Response({
+                    'error': 'رمز عبور اشتباه است'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+
+        except (Student.DoesNotExist, Professor.DoesNotExist):
+            return Response({
+                'error': 'کاربر یافت نشد'
+            }, status=status.HTTP_404_NOT_FOUND)
+
+# Add a dashboard view since we're redirecting to it
+def dashboard(request):
+    return render(request, 'general/dashboard.html')  # Create this template
