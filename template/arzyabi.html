@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ارزیابی اساتید</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/Account/index.css" />
+    <style>
+        body {
+            font-family: 'Vazir', Tahoma, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            text-align: right;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .student-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .info-item {
+            padding: 10px;
+            background-color: white;
+            border-radius: 4px;
+        }
+        .professors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .professor-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .professor-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .professor-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .professor-title {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .evaluation-button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .evaluated {
+            background-color: #4CAF50;
+        }
+        .download-button {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            padding: 3px 6px;
+            background-color: #12e068;
+            color: white;
+            font-size: 11px;
+            text-decoration: none;
+            border-radius: 3px;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .icons-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 280px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .icons-container i {
+            font-size: 20px;
+            color: #333;
+            cursor: pointer;
+            padding: 8px;
+            margin-left: 15px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .icons-container i:hover {
+            transform: scale(1.1);
+            background-color: #f0f0f0;
+        }
+        
+        .container_panel {
+            display: flex;
+            direction: rtl;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .content_container {
+            flex: 1;
+            margin-right: 280px;
+            padding: 20px;
+        }
+
+        .sidebar_container {
+            width: 280px;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidenav_link {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .sidenav_text {
+            margin-right: 10px;
+            text-align: right;
+        }
+
+        .sidenav_icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .sidenav_acc_btn {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+        }
+
+        .sidenav_link_text {
+            margin-right: 10px;
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            .content_container {
+                margin-right: 0;
+            }
+            
+            .sidebar_container {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar_container.active {
+                transform: translateX(0);
+            }
+            
+            .icons-container {
+                right: 0;
+            }
+            .download-button {
+                left: 10px;
+                bottom: 10px;
+            }
+        }
+
+        .sidenav_text p, 
+        .sidenav_link_text,
+        .sidebar_header_text p,
+        .typo,
+        .accordion_content .sidenav_text p,
+        .sidenav_item .sidenav_text p,
+        .sidenav_wrapper .sidenav_text p {
+            text-align: right;
+            direction: rtl;
+            margin-right: 0;
+            padding-right: 0;
+            width: 100%;
+        }
+
+        .sidenav_link,
+        .sidenav_acc_btn,
+        .accordion_content .sidenav_link,
+        .sidenav_item .sidenav_link {
+            direction: rtl;
+            justify-content: flex-start;
+        }
+
+        .sidenav_item {
+            width: 100%;
+        }
+
+        .sidenav_link {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            width: 100%;
+            padding: 10px 15px;
+        }
+
+        .sidenav_text {
+            flex-grow: 1;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .sidenav_icon {
+            margin-left: auto;
+        }
+
+        .accordion_header .sidenav_acc_btn {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            width: 100%;
+        }
+
+        .sidenav_link_text {
+            flex-grow: 1;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .sidenav_link_icon {
+            margin-left: auto;
+        }
+
+        .sidenav_wrapper,
+        .sidenav_wrapper ul,
+        .accordion_content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidenav_item {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="icons-container">
+        <i class="fas fa-sign-out-alt" title="خروج"></i>
+        <i class="fas fa-bell" title="اعلان"></i>
+        <i class="fas fa-moon" title="حالت شب"></i>
+        <i class="fas fa-search" title="جستجو"></i>
+    </div>
+
+    <div class="container_panel">
+        <div class="content_container">
+            <div class="header">
+                <h1>ارزیابی استاد</h1>
+                <p>دانشجوی عزیز، لطفا با شرکت در ارزیابی اساتید این درس، به بهبود کیفیت آموزش کمک کنید.</p>
+            </div>
+
+            <div class="student-info">
+                <div class="info-item">نام: ...</div>
+                <div class="info-item">شماره دانشجویی: ...</div>
+                <div class="info-item">ترم تحصیلی: ...</div>
+                <div class="info-item">نام خانوادگی: ...</div>
+            </div>
+
+            <div class="professors-grid">
+                <div class="professor-card">
+                    <img src="C:\New folder\assets\images\arzyabi\samaneh.png" alt="سمانه یزدانی" class="professor-image">
+                    <div class="professor-name">سمانه یزدانی</div>
+                    <div class="professor-title">مبانی هوش محاسباتی</div>
+                    <button class="evaluation-button">شروع ارزیابی</button>
+                </div>
+
+                <div class="professor-card">
+                    <img src="C:\New folder\assets\images\arzyabi\nava.jpg" alt="نورا اسلامی" class="professor-image">
+                    <div class="professor-name">نورا اسلامی</div>
+                    <div class="professor-title">مبانی پردازش زبان و گفتار</div>
+                    <button class="evaluation-button"> شروع ارزیابی</button>
+                </div>
+
+                <div class="professor-card">
+                    <img src="C:\New folder\assets\images\arzyabi\sorosh.jpg" alt="نورا اسلامی" class="professor-image">
+                    <div class="professor-name">سروش مبشری</div>
+                    <div class="professor-title">اصول رباتیک</div>
+                    <button class="evaluation-button">شروع ارزیابی</button>
+                </div>
+                <div class="professor-card">
+                    <img src="C:\New folder\assets\images\arzyabi\sepahcar.jpg" alt="نورا اسلامی" class="professor-image">
+                    <div class="professor-name">محمد سپه کار</div>
+                    <div class="professor-title">توسعه نرم افزار</div>
+                    <button class="evaluation-button">شروع ارزیابی</button>
+                </div>
+                <div class="professor-card">
+                    <img src="C:\New folder\assets\images\arzyabi\sadoni.jpg" alt="نورا اسلامی" class="professor-image">
+                    <div class="professor-name">هادی سعدونی</div>
+                    <div class="professor-title">مهندسی اینترنت</div>
+                    <button class="evaluation-button">شروع ارزیابی</button>
+                </div>
+                <div class="professor-card">
+                    <img src="C:\New folder\assets\images\arzyabi\hoseini.jpg" alt="نورا اسلامی" class="professor-image">
+                    <div class="professor-name">بهرام حسینی مطلق</div>
+                    <div class="professor-title">دفاع مقدس</div>
+                    <button class="evaluation-button">شروع ارزیابی</button>
+                </div>
+            </div>
+
+            <a href="#" class="download-button">دریافت کارت</a>
+        </div>
+
+        <div class="sidebar_container">
+            <div class="sidebar_wrapper">
+                <div class="sidebar_header">
+                    <div class="sidebar_header_button">
+                        <span class="sidebar_toggle_btn">
+                            <i class="fa-solid fa-bars"></i>
+                        </span>
+                    </div>
+                    <div class="sidebar_header_title">
+                        <div class="sidebar_header_text">
+                            <p class="typo muted">دانشجوی مهندسی نرم افزار</p>
+                            <p class="typo">ساناز معینی صدر</p>
+                        </div>
+                        <div class="sidebar_header_avatar">
+                            <img src="https://placehold.co/50x60/" alt="avtr" />
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar_search">
+                    <input type="text" class="search_input" placeholder="جستجو" />
+                    <span class="search_icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                </div>
+                <ul class="sidenav_wrapper">
+                    <div class="accordion">
+                        <div class="accordion_header">
+                            <div class="accordion_icon">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                            <div class="sidenav_acc_btn">
+                                <p class="typo sidenav_link_text">داشبورد</p>
+                                <span class="sidenav_link_icon">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="accordion_content">
+                            <div class="sidenav_item">
+                                <a href="#" class="sidenav_link">
+                                    <div class="sidenav_text">
+                                        <p class="typo">انتخاب واحد</p>
+                                    </div>
+                                    <div class="sidenav_icon">
+                                        <i class="fa-solid fa-book-medical"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidenav_item">
+                                <a href="#" class="sidenav_link">
+                                    <div class="sidenav_text">
+                                        <p class="typo">حذف و اضافه</p>
+                                    </div>
+                                    <div class="sidenav_icon">
+                                        <i class="fa-solid fa-calendar-xmark"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidenav_item">
+                                <a href="#" class="sidenav_link">
+                                    <div class="sidenav_text">
+                                        <p class="typo">آخرین وضعیت ترم جاری</p>
+                                    </div>
+                                    <div class="sidenav_icon">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidenav_item">
+                                <a href="#" class="sidenav_link">
+                                    <div class="sidenav_text">
+                                        <p class="typo">حذف اضطراری</p>
+                                    </div>
+                                    <div class="sidenav_icon">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <li class="sidenav_item">
+                        <a href="#" class="sidenav_link">
+                            <div class="sidenav_text">
+                                <p class="typo">مدیریت مالی</p>
+                            </div>
+                            <div class="sidenav_icon">
+                                <i class="fa-solid fa-coins"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidenav_item">
+                        <a href="#" class="sidenav_link">
+                            <div class="sidenav_text">
+                                <p class="typo">درخواست ها / مجوزها</p>
+                            </div>
+                            <div class="sidenav_icon">
+                                <i class="fa-solid fa-envelope-open-text"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidenav_item">
+                        <a href="#" class="sidenav_link">
+                            <div class="sidenav_text">
+                                <p class="typo">صندوق رفاه دانشجویی</p>
+                            </div>
+                            <div class="sidenav_icon">
+                                <i class="fa-solid fa-landmark"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidenav_item border_bottom">
+                        <a href="#" class="sidenav_link">
+                            <div class="sidenav_text">
+                                <p class="typo">ارزیابی استاد</p>
+                            </div>
+                            <div class="sidenav_icon">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidenav_item">
+                        <a href="#" class="sidenav_link">
+                            <div class="sidenav_text">
+                                <p class="typo">تنظیمات</p>
+                            </div>
+                            <div class="sidenav_icon">
+                                <i class="fa-solid fa-gear"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sidenav_item">
+                        <a href="#" class="sidenav_link">
+                            <div class="sidenav_text">
+                                <p class="typo">پشتیبانی</p>
+                            </div>
+                            <div class="sidenav_icon">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/Account/index.js"></script>
+</body>
+</html>
